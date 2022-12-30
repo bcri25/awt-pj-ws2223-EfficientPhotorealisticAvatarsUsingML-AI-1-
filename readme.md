@@ -8,3 +8,37 @@ Tasks:
     Develop a prototype that constructs 3D avatars of a person and applies gestures to it
 
         Implementing a prototype to create an avatar from a single video input as well as detect and transfer facial expressions from the person to the avatar
+
+### Installation
+
+* Clone this repository. (https://github.com/BelindaMyteberi/awt-pj-ws2223-EfficientPhotorealisticAvatarsUsingML-AI-1-.git)
+
+* Switch to correct branch 
+```
+    git checkout video-input-first-attempt
+```
+* Initialise and update submodules
+
+```
+    git submodule init (necessary)
+    git submodule update --init
+```
+
+* Open subm
+```
+    cd nonrigid_nerf
+```
+* Setup the conda environment `nrnerf` (or install the requirements using `pip`):
+```
+conda env create -f environment.yml
+```
+
+* Install COLMAP. (https://colmap.github.io/install.html) for video input data preprocessing (spatial points + view direction)
+
+* An installation of FFMPEG enables *automatic* video generation from images and frame extraction from video input.
+```
+conda install -c conda-forge ffmpeg
+```
+
+
+
