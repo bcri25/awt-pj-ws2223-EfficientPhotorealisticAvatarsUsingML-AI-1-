@@ -26,24 +26,11 @@ Tasks:
 ```
     git checkout video-input-first-attempt
 ```
-* Initialise (necessary??????) and update submodules
+* Initialise and update submodules
 
 ```
-    git submodule init
     git submodule update --init
 ```
-
-(necessary??????)
-
-* Open subm
-```
-    cd nonrigid_nerf
-```
-* Setup the conda environment `nrnerf` (or install the requirements using `pip`):
-```
-conda env create -f environment.yml
-```
-(necessary??????)
 
 * Install COLMAP. (https://colmap.github.io/install.html) for video input data preprocessing (spatial points + view direction)
 
@@ -59,7 +46,15 @@ conda env create -f environment.yml
 
 * Global search for `from llff_preprocessing import gen_poses`  and replace with `from .llff_preprocessing import gen_poses` in nonrigid_nerf/preprocess.py
 
-* Global search for `from llff_preprocessing import gen_poses`  and replace with `from .llff_preprocessing import gen_poses` in nonrigid_nerf/preprocess.py
+* Upload example video or use existing awt.mp4
+
+* Run (with own sample video replace "awt.mp4" with your file name)
+
+```
+    python3 video_input_exploration.py --input awt.mp4
+```
+
+
 
 
 
