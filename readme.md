@@ -17,12 +17,23 @@ Tasks:
 ```
     git checkout video-input-first-attempt
 ```
-* Initialise and update submodules
+
+* Install requiremnets
+```
+    pip install -r requirements.txt
+```
 
 ```
-    git submodule init (necessary)
+    git checkout video-input-first-attempt
+```
+* Initialise (necessary??????) and update submodules
+
+```
+    git submodule init
     git submodule update --init
 ```
+
+(necessary??????)
 
 * Open subm
 ```
@@ -32,13 +43,25 @@ Tasks:
 ```
 conda env create -f environment.yml
 ```
+(necessary??????)
 
 * Install COLMAP. (https://colmap.github.io/install.html) for video input data preprocessing (spatial points + view direction)
 
-* An installation of FFMPEG enables *automatic* video generation from images and frame extraction from video input.
-```
-conda install -c conda-forge ffmpeg
-```
+	* From [nerf-pytorch](https://github.com/yenchenlin/nerf-pytorch), use `load_llff.py` to replace the example version included in this repo.
+		* In `load_llff_data()`, replace `sc = 1. if bd_factor is None else 1./(bds.min() * bd_factor)` with `sc = 1./(bds.max() - bds.min())`
+	* From [LLFF](https://github.com/Fyusion/LLFF), copy from `llff/poses/` the three files `colmap_read_model.py`, `colmap_wrapper.py`, and `pose_utils.py` directly into `./llff_preprocessing` (replacing existing files).
+		* In `pose_utils.py` fix the imports by:
+			* Commenting out `import skimage.transform`,
+			* Replacing `from llff.poses.colmap_wrapper import run_colmap` with `from .colmap_wrapper import run_colmap`,
+			* Replacing `import llff.poses.colmap_read_model as read_model` with `from . import colmap_read_model as read_model`.
+
+* Rename `HashNeRF-pytorch` module to `hashnerf`
+
+* Global search for `from llff_preprocessing import gen_poses`  and replace with `from .llff_preprocessing import gen_poses` in nonrigid_nerf/preprocess.py
+
+* Global search for `from llff_preprocessing import gen_poses`  and replace with `from .llff_preprocessing import gen_poses` in nonrigid_nerf/preprocess.py
+
+
 
 
 
