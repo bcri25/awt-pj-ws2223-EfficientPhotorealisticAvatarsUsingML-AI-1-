@@ -44,14 +44,12 @@ Tasks:
 
 * Rename `HashNeRF-pytorch` module to `hashnerf`
 
-* Global search for `from llff_preprocessing import gen_poses`  and replace with `from .llff_preprocessing import gen_poses` in nonrigid_nerf/preprocess.py
-
 * Upload example video or use existing awt.mp4
 
 * Run (with own sample video replace "awt.mp4" with your file name)
 
 ```
-    python3 video_input_exploration.py --input awt.mp4
+    python3 video_input_exploration.py --config awt.txt --input awt.mp4
 ```
 
 
