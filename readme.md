@@ -8,3 +8,54 @@ Tasks:
     Develop a prototype that constructs 3D avatars of a person and applies gestures to it
 
         Implementing a prototype to create an avatar from a single video input as well as detect and transfer facial expressions from the person to the avatar
+
+### Installation
+The following steps are for use on a linux machine with Nvidia GPU. We assume an existing installation of Nvidia's CUDA Toolkit.
+
+* Clone this repository. (https://github.com/BelindaMyteberi/awt-pj-ws2223-EfficientPhotorealisticAvatarsUsingML-AI-1-.git)
+
+* Open directory 
+```
+cd awt-pj-ws2223-EfficientPhotorealisticAvatarsUsingML-AI-1-/
+```
+* Install requiremnets
+```
+    pip install -r requirements.txt
+```
+* Initialise and update submodules
+
+```
+    git submodule update --init
+```
+* Install the package imagemagick using your distributions package manager, e.g.
+```
+    sudo apt-get install imagemagick
+```
+* Install COLMAP. (https://colmap.github.io/install.html) for video input data preprocessing (spatial points + view direction). Make sure to install a version with CUDA support.
+
+	* From [nerf-pytorch](https://github.com/yenchenlin/nerf-pytorch), use `load_llff.py` to replace the example version included in this repo.
+		* In `load_llff_data()`, replace `sc = 1. if bd_factor is None else 1./(bds.min() * bd_factor)` with `sc = 1./(bds.max() - bds.min())`
+	* From [LLFF](https://github.com/Fyusion/LLFF), copy from `llff/poses/` the three files `colmap_read_model.py`, `colmap_wrapper.py`, and `pose_utils.py` directly into `./llff_preprocessing` (replacing existing files).
+		* In `pose_utils.py` fix the imports by:
+			* Commenting out `import skimage.transform`,
+			* Replacing `from llff.poses.colmap_wrapper import run_colmap` with `from .colmap_wrapper import run_colmap`,
+			* Replacing `import llff.poses.colmap_read_model as read_model` with `from . import colmap_read_model as read_model`.
+
+* Rename `HashNeRF-pytorch` module to `hashnerf`
+
+* Global search `from llff_preprocessing import gen_poses` and replace with relative path `from .llff_preprocessing import gen_poses`
+
+* Upload example video or use existing awt.mp4
+
+* Run (with own sample video replace "awt.mp4" with your file name and create personal config file)
+
+```
+    python3 video_input_exploration.py --config awt.txt --input awt.mp4
+```
+
+
+
+
+
+
+

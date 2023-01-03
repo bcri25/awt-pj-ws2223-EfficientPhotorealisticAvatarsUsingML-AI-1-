@@ -1,0 +1,12 @@
+configargparse
+imageio
+imageio-ffmpeg
+kornia
+matplotlib
+numpy
+opencv-python
+Pillow
+torch
+tqdm
+
+

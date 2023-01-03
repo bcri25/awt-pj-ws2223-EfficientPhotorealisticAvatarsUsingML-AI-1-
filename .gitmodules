@@ -1,0 +1,6 @@
+[submodule "HashNeRF-pytorch"]
+	path = HashNeRF-pytorch
+	url = https://github.com/yashbhalgat/HashNeRF-pytorch.git
+[submodule "nonrigid_nerf"]
+	path = nonrigid_nerf
+	url = https://github.com/facebookresearch/nonrigid_nerf.git
